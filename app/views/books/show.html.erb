@@ -4,6 +4,8 @@
 
 <h2>Book detail</h2>
 
+<p><%= image_tag @book.user.get_profile_image %></p>
+<p><%= @user.name %></p>
 <p>Title：<%= @book.title %></p>
 <p>Opinion：<%= @book.body %></p>
 
