@@ -25,18 +25,30 @@
         <div class="justify-content-end">
          <ul class="navbar-nav">
           <li>
-            <i class="fa-solid fa-house-chimney"><%= link_to 'Home', user_path(current_user.id) %></i>
+            <%= link_to user_path(current_user.id) do%>
+              <i class="fa-solid fa-house-chimney"></i>
+              Home
+            <% end  %>
           </li>
 
           <li>
-            <i class="fa-solid fa-users"><%= link_to 'Users', users_path %></i>
+            <%= link_to users_path do%>
+              <i class="fa-solid fa-users"></i>
+              Users
+            <% end %>
           </li>
 
           <li>
-            <i class="fa-solid fa-book-open"><%= link_to 'Books', books_path %></i>
+            <%= link_to books_path do%>
+              <i class="fa-solid fa-book-open"></i>
+              Books
+            <% end %>
           </li>
           <li>
-            <i class="fa-solid fa-right-from-bracket"><%= link_to "Log out", destroy_user_session_path, method: :delete %></i>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Log out
+            <% end %>
           </li>
          </ul>
         </div>
@@ -49,19 +61,31 @@
 
        <ul class="navbar-nav mr-auto">
         <li>
-          <i class="fa-solid fa-house-chimney"><%= link_to "Home", "/" %></i>
+          <%= link_to "/" do %>
+            <i class="fa-solid fa-house-chimney"></i>
+            Home
+          <% end %>
         </li>
 
         <li>
-          <i class="fa-solid fa-link"><%= link_to "About", about_path %></i>
+          <%= link_to about_path do%>
+            <i class="fa-solid fa-link"></i>
+            About
+          <% end %>
         </li>
 
         <li>
-          <i class="fa-solid fa-user-plus"><%= link_to "Sign Up", new_user_registration_path %></i>
+          <%= link_to new_user_registration_path do %>
+            <i class="fa-solid fa-user-plus"></i>
+            Sign up
+          <% end %>
         </li>
 
         <li>
-          <i class="fa-solid fa-right-to-bracket"><%= link_to "Log in", new_user_session_path %></i>
+          <%= link_to new_user_session_path do %>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            Log in
+          <% end %>
         </li>
        </ul>
       <% end %>
