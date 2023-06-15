@@ -2,6 +2,15 @@
   <%= flash[:notice] %>
 </div>
 
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="container">
   <div class="row">
 
@@ -22,7 +31,7 @@
 
       <h1>New book</h1>
 
-          <%= form_with model: @book do |f| %>
+          <%= form_with model: Book.new do |f| %>
             <h4>Title</h4>
               <%= f.text_field :title %>
             <h4>Opinion</h4>
@@ -40,10 +49,12 @@
               <th></th>
               <th></th>
               <th></th>
+              <th></th>
            </tr>
 
            <tr>
                <td><%= image_tag @book.user.get_profile_image %></td>
+               <td><%= link_to @user.name, user_path(@user.id)%></td>
                <td><%= link_to @book.title, book_path(@book.id) %></td>
                <td><%= @book.body %></td>
                <% if @book.user == current_user %>
@@ -66,15 +77,4 @@
 
 
 
-  <h2>Book detail</h2>
-  <table class="table table-striped">
-  <p><%= image_tag @book.user.get_profile_image %></p>
-  <p><%= @user.name %></p>
-  <p>Title：<%= @book.title %></p>
-  <p>Opinion：<%= @book.body %></p>
-
-  <% if @book.user == current_user %>
-      <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-secondary" %>
-      <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-secondary" %>
-  <% end %>
-</table>
+  
